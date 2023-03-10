@@ -1,6 +1,7 @@
-1. Instalation of Git
+1. Install Git
     - in Mac install command line tool for Xtool - it includes git
     - Or by brew `brew install git`
+    - Check git `git --version`
 
 2. Create a virtual envionment of python in that folder to install project related packages as per requerments.
 
