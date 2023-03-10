@@ -4,6 +4,6 @@
 
 2. Create a virtual envionment of python in that folder to install project related packages as per requerments.
 
-    - "python3 -m venv test_env"
-    - activating virual env -- "source test_env/bin/activate"
-    - deactivation virtual env -- "deactivate"
+    - `python3 -m venv test_env`
+    - activating virual env -- `source test_env/bin/activate`
+    - deactivation virtual env -- `deactivate`
