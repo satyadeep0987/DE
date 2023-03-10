@@ -1,0 +1,3 @@
+*.DS_Store
+de_venv
+*.ipynb_checkpoints
