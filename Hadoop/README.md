@@ -68,3 +68,21 @@ hadoop fs -ls /hadoop-user
 ```
 hadoop fs -cp /hadoop-user/trees.csv /hadoop-user2
 ```
+
+- COUNT OF FILE UNDER DIRECTORY
+
+```
+hadoop fs -count /
+```
+
+- TO CHECK DISK USAGE EACH FOLDER OR DIRECTORY
+
+```
+hadoop fs -du /
+```
+
+- TO CHECK DISK FREE
+
+```
+hadoop fs -df
+```
