@@ -86,3 +86,22 @@ hadoop fs -du /
 ```
 hadoop fs -df
 ```
+
+- TO CHECK HOW ANY COMMAND WORKS OR AN HINT 
+
+```
+hadoop fs -usage <command>
+hadoop fs -usage mkdir
+```
+
+- TO CHECK STATS OF A FILE OR DIRECTORY
+
+```
+hadoop fs -stat <filename/file path>
+```
+
+- TO CHECK HEALTH OF THE DISK
+
+```
+hdfs fsck /
+```
