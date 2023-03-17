@@ -51,12 +51,14 @@ hadoop fs -mkdir /hadoop-user
 
 ```
 hadoop fs -copyFromLocal trees.csv /hadoop-user
+hadoop fs -put trees.csv /hadoop-user
 ```
 
 - COPY TO HDFS TO LOCAL FS
 
 ```
 hadoop fs -copyToLocal /hadoop-user/trees.csv .
+hadoop fs -get /hadoop-user/trees.csv .
 ```
 
 ```
