@@ -86,3 +86,9 @@ OK
 27
 Time taken: 27.389 seconds, Fetched: 1 row(s)
 ```
+
+- To see headers also we we query table for that we need to setup the property:
+
+```
+set hive.cli.print.header = true;
+```
