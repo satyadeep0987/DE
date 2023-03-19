@@ -16,7 +16,7 @@ show databases;
 create database <database name>
 ```
 
-- Create table in Hive, like typical SQL here string == varchar, number = int etc.
+- Create internal table in Hive, like typical SQL here string == varchar, number = int etc.
 
 ```
     create table department_data
@@ -91,4 +91,26 @@ Time taken: 27.389 seconds, Fetched: 1 row(s)
 
 ```
 set hive.cli.print.header = true;
+```
+
+- Load Data into the table from hdfs location
+
+```
+load data inpath '<acurate file path> into table <table name>;
+load data inpath '/hive_test' into table department_data_from_hdfs;ß
+```
+
+- Create External table in Hive, like typical SQL here string == varchar, number = int etc.
+
+```
+    create external table department_data_external
+    (
+    dept_id int,
+    dept_name string,
+    manager_id int,
+    salary int
+    )
+    row format delimited
+    fields terminated by ','
+    location '/hive_test/';
 ```
