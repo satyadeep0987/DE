@@ -114,3 +114,51 @@ load data inpath '/hive_test' into table department_data_from_hdfs;ß
     fields terminated by ','
     location '/hive_test/';
 ```
+
+- work with Array data types
+
+```
+    create table employee
+    (
+        emp_id int,
+        emp_name string,
+        skills Array<string>
+    )
+    row format delimited
+    fields terminated by ','
+    collection items terminated by ':';
+
+    load data inpath local 'file:///array_data.csv' into table employee;
+```
+
+- Acessing Array with Hive SQL and funtions
+
+```
+    select id, name, skills[0] as prime_skill from employee;
+
+    select id, 
+        name, 
+        size(skills) as size_of_each_array,
+        array_contains(skills,"HADOOP") as knows_hadoop, 
+        sort_array(skills) as sorted_array
+        from employee;
+
+```
+
+- Working with Map i.e key value pair
+
+```
+    create table employee_details_map
+    (
+        emp_id int,
+        emp_name string,
+        details map(string,string)
+    )
+    row format delimited
+    fields terminated by ','
+    collection items terminated by ':'
+    map kyes terminated by ',';
+
+    load data inpath local 'file:///map_data.csv' into table employee;
+
+```
