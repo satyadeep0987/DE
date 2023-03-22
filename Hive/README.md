@@ -143,6 +143,13 @@ load data inpath '/hive_test' into table department_data_from_hdfs;ß
         sort_array(skills) as sorted_array
         from employee;
 
+    - output
+
+    id      primary_skill   had_required_skill      _c3
+    101     HADOOP  true    ["BIG-DATA","HADOOP","HIVE","SPARK"]
+    102     HIVE    true    ["HADOOP","HIVE","OZZIE","SPARK","STORM"]
+    103     KAFKA   false   ["CASSANDRA","HBASE","KAFKA"]
+
 ```
 
 - Working with Map i.e key value pair
@@ -152,13 +159,55 @@ load data inpath '/hive_test' into table department_data_from_hdfs;ß
     (
         emp_id int,
         emp_name string,
-        details map(string,string)
+        details map<string,string>
     )
     row format delimited
     fields terminated by ','
-    collection items terminated by ':'
-    map kyes terminated by ',';
+    collection items terminated by '|'
+    map keys terminated by ':';
 
     load data inpath local 'file:///map_data.csv' into table employee;
 
+```
+
+- Qering with map data into the tables
+
+```
+    select * from employee_details_map;
+    
+    - output
+    employee_details_map.emp_id     employee_details_map.emp_name   employee_details_map.details
+    101     Amit    {"age":"21","gender":"M"}
+    102     Sumit   {"age":"24","gender":"M"}
+    103     Mansi   {"age":"23","gender":"F"}
+```
+
+```
+    select emp_id,
+    emp_name,
+    details["age"] age,
+    details["gender"] gender
+    from employee_details_map;
+
+    - output
+    emp_id  emp_name        age     gender
+    101     Amit    21      M
+    102     Sumit   24      M
+    103     Mansi   23      F
+```
+
+```
+    select 
+    emp_id,
+    emp_name,
+    size(details),
+    map_keys(details) distinct_keys,
+    map_values(details) distinct_values
+    from employee_details_map;
+
+    - output
+    emp_id  emp_name        _c2     distinct_keys   distinct_values
+    101     Amit    2       ["age","gender"]        ["21","M"]
+    102     Sumit   2       ["age","gender"]        ["24","M"]
+    103     Mansi   2       ["age","gender"]        ["23","F"]
 ```
